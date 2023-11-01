@@ -1,7 +1,14 @@
 #include <iostream>
 #include "raylib.h"
 using namespace std;
+void game()
+{
 
+}
+void rulesFunction()
+{
+
+}
 float HEIGHT, WIDTH;
 int main()
 {
@@ -42,5 +49,14 @@ int main()
         EndDrawing();
 
         SetExitKey(0);
+
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointRec(mousePoint, startGameButton))
+            game();
+
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointRec(mousePoint, rulesButton))
+            rulesFunction();
+
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointRec(mousePoint, quitGameButton))
+            exitGame = true;
     }
 }
