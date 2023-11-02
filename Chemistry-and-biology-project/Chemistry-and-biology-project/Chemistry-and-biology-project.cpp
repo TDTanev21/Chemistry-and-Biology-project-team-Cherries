@@ -6,7 +6,7 @@ void game()
     SetExitKey(KEY_ESCAPE);
     
     Texture2D ship;
-    ship = LoadTexture("../images/ship1.png");
+    ship = LoadTexture("../images/ship.png");
     Vector2 ballPosition = { -100.0f, -100.0f };
 
     Texture2D bg = LoadTexture("../images/gamebg.png");
