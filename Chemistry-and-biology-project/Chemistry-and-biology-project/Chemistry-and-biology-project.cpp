@@ -8,14 +8,20 @@ void game()
     Texture2D ship;
     ship = LoadTexture("../images/ship.png");
     Vector2 ballPosition = { -100.0f, -100.0f };
-
     Texture2D bg = LoadTexture("../images/gamebg.png");
     Rectangle bgRect[2] = { { 0, 0, bg.width, bg.height} , {0, -bg.height, bg.width, bg.height} };
     float speed = 3;
-
+    double shipX = GetScreenHeight() / 3 + 110;
+    double shipY = 650;
     while (!WindowShouldClose())
     {
+        shipY+= 0.7f;
         ballPosition = GetMousePosition();
+        if (IsKeyDown(KEY_RIGHT)) shipX += 2.0f;
+        if (IsKeyDown(KEY_LEFT)) shipX -= 2.0f;
+        if (IsKeyDown(KEY_UP)) shipY -= 2.0f;
+        if (IsKeyDown(KEY_DOWN)) shipY += 2.0f;
+
 
         BeginDrawing();
 
@@ -29,10 +35,9 @@ void game()
         }
         DrawFPS(50, 50);
 
-        DrawTexture(ship, GetScreenWidth() / 3 + 110, 650, WHITE);
         
+        DrawTexture(ship, shipX, shipY, WHITE);
         DrawCircleV(ballPosition, 10, BLACK);
-
         HideCursor();
         ClearBackground(BLUE);
         EndDrawing();
