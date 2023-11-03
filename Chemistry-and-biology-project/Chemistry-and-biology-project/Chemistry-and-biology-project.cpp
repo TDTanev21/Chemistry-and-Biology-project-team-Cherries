@@ -11,16 +11,16 @@ void game()
     Texture2D bg = LoadTexture("../images/gamebg.png");
     Rectangle bgRect[2] = { { 0, 0, bg.width, bg.height} , {0, -bg.height, bg.width, bg.height} };
     float speed = 3;
-    double shipX = GetScreenHeight() / 3 + 110;
+    double shipX = GetScreenHeight() / 2 + 245;
     double shipY = 650;
     while (!WindowShouldClose())
     {
-        shipY+= 0.7f;
+        shipY+= 0.5f;
         ballPosition = GetMousePosition();
-        if (IsKeyDown(KEY_RIGHT)) shipX += 2.0f;
-        if (IsKeyDown(KEY_LEFT)) shipX -= 2.0f;
-        if (IsKeyDown(KEY_UP)) shipY -= 2.0f;
-        if (IsKeyDown(KEY_DOWN)) shipY += 2.0f;
+        if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) shipX += 2.0f;
+        if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) shipX -= 2.0f;
+        if (IsKeyDown(KEY_W) || IsKeyDown(KEY_UP))shipY -= 2.0f;
+        if (IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN))shipY += 2.0f;
 
 
         BeginDrawing();
