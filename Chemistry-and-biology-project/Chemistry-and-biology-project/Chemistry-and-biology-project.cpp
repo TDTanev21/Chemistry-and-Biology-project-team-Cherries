@@ -49,34 +49,40 @@ void rulesFunction()
 
     Vector2 ballPosition = { -100.0f, -100.0f };
     Vector2 mousePoint = { -100.0f, -100.0f };
-    Texture2D exitToGame, exitToMenu;
+    Texture2D exitToGame;
+    Texture2D rulesBackground;
+
     exitToGame = LoadTexture("../images/rulesToGame.png");
-    exitToMenu = LoadTexture("../images/rulesToMenuButton.png");
+    rulesBackground = LoadTexture("../images/rulesbg.png");
+
     Rectangle exitRulesButton = { 1635, 925, exitToGame.width, exitToGame.height };
+
+
     while (!WindowShouldClose())
     {
         ballPosition = GetMousePosition();
         mousePoint = GetMousePosition();
 
         BeginDrawing();
+        DrawTexture(rulesBackground,0,0, WHITE);
         DrawText("press ESC to go back", 75, 915, 20, RED);
         DrawTexture(exitToGame, 1635, 925, WHITE);
-        DrawRectangleLines(75, 85, 1580, 820, ORANGE);
+        DrawRectangleLines(180, 160, 1500, 750, ORANGE);
         DrawCircleV(ballPosition, 10, BLACK);
         HideCursor();
         DrawFPS(75, 50);
-        DrawText("There were times when people decided to get better,", 100, 110, 50, ORANGE);
-        DrawText("to change themselves to a better reality and a ", 100, 160, 50, ORANGE);
-        DrawText("different lifestyle, so that's why they all gathered  ", 100, 210, 50, ORANGE);
-        DrawText("all the trash on the planet together and put them on", 100, 260, 50, ORANGE);
-        DrawText(" a big recycling ship. But the big ship crashed on an ", 100, 310, 50, ORANGE);
-        DrawText("ice berg and all the garbage went floating in the ocean.", 100, 360, 50, ORANGE);
-        DrawText("Your task is to gather all the left overs of the trash ", 100, 410, 50, ORANGE);
-        DrawText("by completing chemistry and biology problems and ", 100, 460, 50, ORANGE);
-        DrawText("questions. Good luck saving the whole planet ECO pirate.", 100, 510, 50, ORANGE);
-        DrawText("*hint*", 100, 600, 50, RED);
-        DrawText("You should be very careful when choosing the right answer", 100, 700, 50, BLACK);
-        DrawText("because you have 3 lifes only.", 100, 770, 50, BLACK);
+        DrawText("There were times when people decided to get better,", 190, 165, 50, WHITE);
+        DrawText("to change themselves to a better reality and a ", 190, 215, 50, WHITE);
+        DrawText("different lifestyle, so that's why they all gathered  ", 190, 265, 50, WHITE);
+        DrawText("all the trash on the planet together and put them on", 190, 315, 50, WHITE);
+        DrawText("a big recycling ship. But the big ship crashed on an ", 190, 365, 50, WHITE);
+        DrawText("ice berg and all the garbage went floating in the ocean.", 190, 415, 50, WHITE);
+        DrawText("Your task is to gather all the left overs of the trash ", 190, 465, 50, WHITE);
+        DrawText("by completing chemistry and biology problems and ", 190, 515, 50, WHITE);
+        DrawText("questions. Good luck saving the whole planet ECO pirate.", 190, 565, 50, WHITE);
+        DrawText("*hint*", 190, 665, 50, RED);
+        DrawText("You should be very careful when choosing the right", 190, 765, 50, WHITE);
+        DrawText("answer because you have 3 lifes only.", 190, 825, 50, WHITE);
         ClearBackground(BLUE);
         EndDrawing();
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointRec(mousePoint, exitRulesButton))
