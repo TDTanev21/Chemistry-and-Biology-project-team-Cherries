@@ -14,7 +14,7 @@ void game()
     ballPosition = { -100.0f, -100.0f };
     Texture2D bg = LoadTexture("../images/gamebg.png");
     Rectangle bgRect[2] = { { 0, 0, bg.width, bg.height} , {0, -bg.height, bg.width, bg.height} };
-    float speed = 3;
+    float speed = 2;
     double shipX = GetScreenHeight() / 2 + 245;
     double shipY = 650;
     while (!WindowShouldClose())
@@ -42,11 +42,11 @@ void game()
 
         DrawTexture(ship, shipX, shipY, WHITE);
         DrawTexture(trash1, 300, 200, WHITE);
-        DrawTexture(trash2, 1000, 400, WHITE);
-        DrawTexture(trash3, 600, 800, WHITE);
-        DrawTexture(trash4, 1300, 600, WHITE);
-        DrawTexture(trash5, 1600, 1000, WHITE);
-        DrawTexture(trash2, 1200, 700, WHITE);
+        DrawTexture(trash2, 1600, 400, WHITE);
+        DrawTexture(trash3, 250, 670, WHITE);
+        DrawTexture(trash4, 750, 500, WHITE);
+        DrawTexture(trash5, 1800, 100, WHITE);
+        DrawTexture(trash6, 1200, 575, WHITE);
 
         DrawCircleV(ballPosition, 10, BLACK);
         HideCursor();
