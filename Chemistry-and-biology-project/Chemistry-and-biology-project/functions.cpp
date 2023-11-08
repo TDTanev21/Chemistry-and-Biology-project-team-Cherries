@@ -3,7 +3,13 @@
 void game()
 {
     SetExitKey(KEY_ESCAPE);
-
+   
+    Texture2D trash1 = LoadTexture("../images/bottle.png");
+    Texture2D trash2 = LoadTexture("../images/plasticBag.png");
+    Texture2D trash3 = LoadTexture("../images/trash.png");
+    Texture2D trash4 = LoadTexture("../images/spray.png");
+    Texture2D trash5 = LoadTexture("../images/foodTrash.png");
+    Texture2D trash6 = LoadTexture("../images/sodaCan.png");
     Texture2D ship = LoadTexture("../images/ship.png");
     ballPosition = { -100.0f, -100.0f };
     Texture2D bg = LoadTexture("../images/gamebg.png");
@@ -35,6 +41,13 @@ void game()
 
 
         DrawTexture(ship, shipX, shipY, WHITE);
+        DrawTexture(trash1, 300, 200, WHITE);
+        DrawTexture(trash2, 1000, 400, WHITE);
+        DrawTexture(trash3, 600, 800, WHITE);
+        DrawTexture(trash4, 1300, 600, WHITE);
+        DrawTexture(trash5, 1600, 1000, WHITE);
+        DrawTexture(trash2, 1200, 700, WHITE);
+
         DrawCircleV(ballPosition, 10, BLACK);
         HideCursor();
         ClearBackground(BLUE);
@@ -143,3 +156,4 @@ void rulesFunction()
 
     }
 }
+
