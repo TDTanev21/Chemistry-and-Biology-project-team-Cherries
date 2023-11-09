@@ -10,13 +10,24 @@ void game()
     Texture2D trash4 = LoadTexture("../images/spray.png");
     Texture2D trash5 = LoadTexture("../images/foodTrash.png");
     Texture2D trash6 = LoadTexture("../images/sodaCan.png");
+    Texture2D trash7 = LoadTexture("../images/tire.png");
+    Texture2D trash8 = LoadTexture("../images/notebook.png");
     Texture2D ship = LoadTexture("../images/ship.png");
+    Rectangle trash1Colission = { 300, 200, trash1.width, trash1.height };
+    Rectangle trash2Colission = { 1500, 400, trash2.width, trash2.height };
+    Rectangle trash3Colission = { 150, 670, trash2.width, trash2.height };
+    Rectangle trash4Colission = { 350, 500, trash2.width, trash2.height };
+    Rectangle trash5Colission = { 1400, 100, trash2.width, trash2.height };
+    Rectangle trash6Colission = { 1700, 675, trash2.width, trash2.height };
+    Rectangle trash7Colission = { 600, 50, trash2.width, trash2.height };
+    Rectangle trash8Colission = { 1200, 175, trash2.width, trash2.height };
     ballPosition = { -100.0f, -100.0f };
     Texture2D bg = LoadTexture("../images/gamebg.png");
     Rectangle bgRect[2] = { { 0, 0, bg.width, bg.height} , {0, -bg.height, bg.width, bg.height} };
     float speed = 2;
     double shipX = GetScreenHeight() / 2 + 245;
     double shipY = 650;
+    Rectangle shipCollision = { shipX, shipY, ship.width, ship.height };
     while (!WindowShouldClose())
     {
         shipY += 0.5f;
@@ -25,6 +36,19 @@ void game()
         if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) shipX -= 2.0f;
         if (IsKeyDown(KEY_W) || IsKeyDown(KEY_UP))shipY -= 2.0f;
         if (IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN))shipY += 2.0f;
+        if ((shipX + ship.width) > GetScreenWidth() + 150)
+        {
+            shipX = GetScreenWidth() - ship.width;
+        }
+        if ((shipX + ship.width) < 300)
+        {
+            shipX = 0;
+        }
+        if ((shipY + ship.height) >= GetScreenWidth())
+        {
+            shipY = GetScreenHeight() - ship.height;
+        }
+            
 
 
         BeginDrawing();
@@ -42,11 +66,13 @@ void game()
 
         DrawTexture(ship, shipX, shipY, WHITE);
         DrawTexture(trash1, 300, 200, WHITE);
-        DrawTexture(trash2, 1600, 400, WHITE);
-        DrawTexture(trash3, 250, 670, WHITE);
-        DrawTexture(trash4, 750, 500, WHITE);
-        DrawTexture(trash5, 1800, 100, WHITE);
-        DrawTexture(trash6, 1200, 575, WHITE);
+        DrawTexture(trash2, 1500, 400, WHITE);
+        DrawTexture(trash3, 150, 670, WHITE);
+        DrawTexture(trash4, 350, 500, WHITE);
+        DrawTexture(trash5, 1400, 100, WHITE);
+        DrawTexture(trash6, 1700, 675, WHITE);
+        DrawTexture(trash7, 600, 50,  WHITE);
+        DrawTexture(trash8, 1200, 175, WHITE);
 
         DrawCircleV(ballPosition, 10, BLACK);
         HideCursor();
