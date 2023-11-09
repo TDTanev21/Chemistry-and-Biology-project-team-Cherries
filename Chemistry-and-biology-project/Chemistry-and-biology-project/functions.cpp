@@ -15,12 +15,12 @@ void game()
     Texture2D ship = LoadTexture("../images/ship.png");
     Rectangle trash1Colission = { 300, 200, trash1.width, trash1.height };
     Rectangle trash2Colission = { 1500, 400, trash2.width, trash2.height };
-    Rectangle trash3Colission = { 150, 670, trash2.width, trash2.height };
-    Rectangle trash4Colission = { 350, 500, trash2.width, trash2.height };
-    Rectangle trash5Colission = { 1400, 100, trash2.width, trash2.height };
-    Rectangle trash6Colission = { 1700, 675, trash2.width, trash2.height };
-    Rectangle trash7Colission = { 600, 50, trash2.width, trash2.height };
-    Rectangle trash8Colission = { 1200, 175, trash2.width, trash2.height };
+    Rectangle trash3Colission = { 150, 670, trash3.width, trash3.height };
+    Rectangle trash4Colission = { 350, 500, trash4.width, trash4.height };
+    Rectangle trash5Colission = { 1400, 100, trash5.width, trash5.height };
+    Rectangle trash6Colission = { 1700, 675, trash6.width, trash6.height };
+    Rectangle trash7Colission = { 600, 50, trash7.width, trash7.height };
+    Rectangle trash8Colission = { 1200, 175, trash8.width, trash8.height };
     ballPosition = { -100.0f, -100.0f };
     Texture2D bg = LoadTexture("../images/gamebg.png");
     Rectangle bgRect[2] = { { 0, 0, bg.width, bg.height} , {0, -bg.height, bg.width, bg.height} };
@@ -40,15 +40,19 @@ void game()
         {
             shipX = GetScreenWidth() - ship.width;
         }
-        if ((shipX + ship.width) < 300)
+        if ((shipX + ship.width) < 310)
         {
             shipX = 0;
         }
-        if ((shipY + ship.height) >= GetScreenWidth())
+        if ((shipY + ship.height) >= GetScreenHeight() + 40)
         {
             shipY = GetScreenHeight() - ship.height;
         }
-            
+        if ((shipY + ship.height) < 350)
+        {
+            shipY = 0;
+        }
+        
 
 
         BeginDrawing();
@@ -183,3 +187,7 @@ void rulesFunction()
     }
 }
 
+void question()
+{
+    
+}
