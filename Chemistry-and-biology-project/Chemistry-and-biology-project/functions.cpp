@@ -198,10 +198,8 @@ void rulesFunction()
     }
 }
 
-void question()
-{
-    
-    
+void randomQuestion()
+{  
         random_device(rd);
         uniform_int_distribution<int> dist(0, (questionsLength > 1) ? questionsLength - 1 : 1);
         currentQuestion = questionsArr[dist(rd)];
