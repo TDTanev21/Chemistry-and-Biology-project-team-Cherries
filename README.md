@@ -1,13 +1,16 @@
-<h1 align="center">ECO Pirates</h1>
+<h1 align="center">Cherries</h1>
 
 <p align = "center">
-  <img src="Chemistry-and-Biology-project-team-Cherries\Chemistry-and-biology-project\images\logo.png">
+  <img src="Chemistry-and-Biology-project-team-Cherries/Logo/Cherries_Logo.png" alt="Cherries's Logo">
 </p>
 
 <br>
 
 <p align = "center">
-  
+  <img alt="GitHub contributors" src="">
+  <img alt="GitHub repo size" src="">
+  <img alt="GitHub last commit" src="">
+  <img src="">
 </p> 
 
 ## 📋 Description
@@ -32,7 +35,7 @@
 </p> 
 
 ## 📝 Documents
-
+ 
 <h4>Documents</h4>
   <ul>
     <li><a href="">Documentation</a></li>
@@ -57,10 +60,10 @@
 
 | **Name** | **Role** | **Grade** |
 | :---:   | :---: | :---: |
-| Miroslav Ganev | *Scrum trainer* | 🟨 10A |
-| Lazar Apostolov | *Front-end developer*  | 🟥 10B |
-| Georgi Ivanov | *Back-end developer*  | 🟩 10V |
-| Teodor Tanev |  *Back-end developer*  | 🟦 10G |
+| Miroslav Ganev | *Scrum trainer* | 🟨 9A |
+| Lazar Apostolov | *Front-end developer*  | 🟥 9B |
+| Georgi Ivanov | *Back-end developer*  | 🟩 9V |
+| Teodor Tanev |  *Back-end developer*  | 🟦 9G |
 
 
 ## 🎮 ECO Pirates
