@@ -1,15 +1,21 @@
 #include "main.h"
 
-//variables for question() and removeQuestion()
+//global variables for question() and removeQuestion()
 string questionsArr[5] = { "1","2", "3","4","5" };
 string answers[5] = { "1", "2", "3", "4", "5" };
 int questionsLength = 5;
 string currentQuestion;
 
 
+
+
 void game()
 {
     //variables for game()
+    Texture2D ship = LoadTexture("../images/ship.png");
+    double shipX = GetScreenHeight() / 2 + 245;
+    double shipY = 650;
+    Rectangle shipCollision = { shipX, shipY, ship.width, ship.height };
     Texture2D trash1 = LoadTexture("../images/bottle.png");
     Texture2D trash2 = LoadTexture("../images/plasticBag.png");
     Texture2D trash3 = LoadTexture("../images/trash.png");
@@ -18,7 +24,7 @@ void game()
     Texture2D trash6 = LoadTexture("../images/sodaCan.png");
     Texture2D trash7 = LoadTexture("../images/tire.png");
     Texture2D trash8 = LoadTexture("../images/notebook.png");
-    Texture2D ship = LoadTexture("../images/ship.png");
+    Texture2D arrTrashes[8] = { trash1, trash2, trash3, trash4, trash5, trash6, trash7, trash8 };
     Rectangle trash1Collision = { 300, 200, trash1.width, trash1.height };
     Rectangle trash2Collision = { 1500, 400, trash2.width, trash2.height };
     Rectangle trash3Collision = { 150, 670, trash3.width, trash3.height };
@@ -27,12 +33,13 @@ void game()
     Rectangle trash6Collision = { 1700, 675, trash6.width, trash6.height };
     Rectangle trash7Collision = { 600, 50, trash7.width, trash7.height };
     Rectangle trash8Collision = { 1200, 175, trash8.width, trash8.height };
+    double trashPositionX = 300, trashPositionY = 200;
     Texture2D bg = LoadTexture("../images/gamebg.png");
     Rectangle bgRect[2] = { { 0, 0, bg.width, bg.height} , {0, -bg.height, bg.width, bg.height} };
     float speed = 2;
-    double shipX = GetScreenHeight() / 2 + 245;
-    double shipY = 650;
-    Rectangle shipCollision = { shipX, shipY, ship.width, ship.height };
+    
+
+    
 
 
     SetExitKey(KEY_ESCAPE);
@@ -78,14 +85,26 @@ void game()
 
 
         DrawTexture(ship, shipX, shipY, WHITE);
-        DrawTexture(trash1, 300, 200, WHITE);
-        DrawTexture(trash2, 1500, 400, WHITE);
-        DrawTexture(trash3, 150, 670, WHITE);
-        DrawTexture(trash4, 350, 500, WHITE);
-        DrawTexture(trash5, 1400, 100, WHITE);
-        DrawTexture(trash6, 1700, 675, WHITE);
-        DrawTexture(trash7, 600, 50, WHITE);
-        DrawTexture(trash8, 1200, 175, WHITE);
+        for (int i = 0; i < 8; i++)
+        {
+            DrawTexture(arrTrashes[i], trashPositionX, trashPositionY, WHITE);
+            trashPositionX += 200;
+            trashPositionY += 50;
+
+            if (i % 2 == 0)
+            {
+                trashPositionY -= 100;
+            }
+            if ((i + 1) % 8 == 0) 
+            {
+                trashPositionX = 225;
+                trashPositionY = 200;
+               
+            }
+            
+            
+        }
+        
 
         DrawCircleV(ballPosition, 10, BLACK);
         HideCursor();
@@ -212,3 +231,5 @@ void removeQuestion()
         }
     }
 }
+
+void task();
