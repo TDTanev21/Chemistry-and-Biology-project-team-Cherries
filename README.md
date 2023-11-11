@@ -1,7 +1,7 @@
 <h1 align="center">ECO Pirates</h1>
 <h6 align="center">Cherries</h6>
 <p align="center">
-<img src="Logo and Documentation/Cherries_Logo.png" width=25% height=100% />
+<img src="Cherries_Logo.png" width=25% height=100% />
 </p>
 
 
