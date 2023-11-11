@@ -1,7 +1,7 @@
 <h1 align="center">ECO Pirates</h1>
 
 <p align = "center">
-  <a href="Chemistry-and-Biology-project-team-Cherries/images/logo.png" alt="logo">
+  <img src="Chemistry-and-Biology-project-team-Cherries\Chemistry-and-biology-project\images\logo.png">
 </p>
 
 <br>
