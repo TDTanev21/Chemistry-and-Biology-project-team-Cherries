@@ -1,7 +1,7 @@
 <h1 align="center">Cherries</h1>
 
 <p align = "center">
-  <img src="Chemistry-and-Biology-project-team-Cherries/Logo/Cherries_Logo.png" alt="Cherries's Logo" heigh=30% width=60%>
+ <img height="150" width="250" alt="" src = "Logo.png" alt = "logo">
 </p>
 
 <br>
@@ -16,9 +16,10 @@
 ## 📋 Description
 
 
-## 🚀 Languages
+## 🚀 Languages and Libraries
 <p align="left">
   <a href="https://www.cplusplus.com/"><img src="https://img.icons8.com/color/48/000000/c-plus-plus-logo.png" alt="C++"/></a>
+  <a href="https://www.raylib.com/"><img src ="https://upload.wikimedia.org/wikipedia/commons/f/f4/Raylib_logo.png" alt="Raylib" heigh=48px width=48px/></a>
 </p>
 
 ## 🗂 Used technologies
@@ -31,7 +32,6 @@
   <a href="https://www.adobe.com/"><img src="https://img.icons8.com/color/48/null/adobe-illustrator--v1.png" alt="Adobe"/></a>
   <a href="https://git-scm.com/"><img src="https://img.icons8.com/color/48/000000/git.png" alt="Git"/></a>
   <a href="https://git-scm.com/"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" heigh=48px width=48px/></a>
-  <a href="https://www.raylib.com/"><img src ="https://upload.wikimedia.org/wikipedia/commons/f/f4/Raylib_logo.png" alt="Raylib" heigh=48px width=48px/></a>
 </p> 
 
 ## 📝 Documents
