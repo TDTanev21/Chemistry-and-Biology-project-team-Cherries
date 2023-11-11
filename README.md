@@ -1,4 +1,4 @@
-<h1 align="center">Algebrain</h1>
+<h1 align="center">ECO Pirates</h1>
 
 <p align = "center">
   <img src="Chemistry-and-Biology-project-team-Cherries/Logo/Cherries_Logo.png" alt="Cherries's Logo">
@@ -7,10 +7,7 @@
 <br>
 
 <p align = "center">
-  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/codingburgas/2223-9th-grade-sprint-math-games-algebrain?style=flat-square">
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/codingburgas/2223-9th-grade-sprint-math-games-algebrain?style=flat-square">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/codingburgas/2223-9th-grade-sprint-math-games-algebrain?style=flat-square">
-  <img src="https://img.shields.io/github/languages/count/codingburgas/2223-9th-grade-sprint-math-games-algebrain?style=flat-square">
+  
 </p> 
 
 ## 📋 Description
@@ -31,11 +28,11 @@
   <a href="https://www.adobe.com/"><img src="https://img.icons8.com/color/48/null/adobe-illustrator--v1.png" alt="Adobe"/></a>
   <a href="https://git-scm.com/"><img src="https://img.icons8.com/color/48/000000/git.png" alt="Git"/></a>
   <a href="https://git-scm.com/"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" heigh=48px width=48px/></a>
-  <a href="https://www.raylib.com/"><img src ="2223-9th-grade-sprint-math-games/Images/icons8-raylib-48.png" alt="Raylib"/></a>
+  <a href="https://www.raylib.com/"><img src ="https://upload.wikimedia.org/wikipedia/commons/f/f4/Raylib_logo.png" alt="Raylib"/></a>
 </p> 
 
 ## 📝 Documents
- 
+
 <h4>Documents</h4>
   <ul>
     <li><a href="">Documentation</a></li>
@@ -60,13 +57,13 @@
 
 | **Name** | **Role** | **Grade** |
 | :---:   | :---: | :---: |
-| Miroslav Ganev | *Scrum trainer* | 🟨 9A |
-| Lazar Apostolov | *Front-end developer*  | 🟥 9B |
-| Georgi Ivanov | *Back-end developer*  | 🟩 9V |
-| Teodor Tanev |  *Back-end developer*  | 🟦 9G |
+| Miroslav Ganev | *Scrum trainer* | 🟨 10A |
+| Lazar Apostolov | *Front-end developer*  | 🟥 10B |
+| Georgi Ivanov | *Back-end developer*  | 🟩 10V |
+| Teodor Tanev |  *Back-end developer*  | 🟦 10G |
 
 
-## 🎮 Algebrain's game
+## 🎮 ECO Pirates
 
 <img src=""/>
 
