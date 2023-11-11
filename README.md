@@ -1,7 +1,7 @@
 <h1 align="center">Cherries</h1>
 
 <p align = "center">
- <img height="150" width="250" alt="" src = "Chemistry-and-biology-project/images/logo.png" alt = "logo">
+ <img height="250" width="450" alt="" src = "Chemistry-and-biology-project/images/logo.png" alt = "logo">
 </p>
 
 <br>
