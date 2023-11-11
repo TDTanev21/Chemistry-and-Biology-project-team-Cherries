@@ -7,10 +7,10 @@
 <br>
 
 <p align = "center">
-  <img alt="GitHub contributors" src="">
-  <img alt="GitHub repo size" src="">
-  <img alt="GitHub last commit" src="">
-  <img alt="" src="">
+  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/codingburgas/Chemistry-and-biology-project?style=flat-square">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/codingburgas/Chemistry-and-biology-project?style=flat-square">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/codingburgas/Chemistry-and-biology-project?style=flat-square">
+  <img src="https://img.shields.io/github/languages/count/codingburgas/Chemistry-and-biology-project?style=flat-square">
 </p> 
 
 ## 📋 Description
