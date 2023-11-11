@@ -71,7 +71,35 @@ void game()
         }
         if (CheckCollisionRecs(shipCollision, trash1Collision))
         {
-            shipY = 0;
+            task();
+        }
+        if (CheckCollisionRecs(shipCollision, trash2Collision))
+        {
+            task();
+        }
+        if (CheckCollisionRecs(shipCollision, trash3Collision))
+        {
+            task();
+        }
+        if (CheckCollisionRecs(shipCollision, trash4Collision))
+        {
+            task();
+        }
+        if (CheckCollisionRecs(shipCollision, trash5Collision))
+        {
+            task();
+        }
+        if (CheckCollisionRecs(shipCollision, trash6Collision))
+        {
+            task();
+        }
+        if (CheckCollisionRecs(shipCollision, trash7Collision))
+        {
+            task();
+        }
+        if (CheckCollisionRecs(shipCollision, trash8Collision))
+        {
+            task();
         }
 
         shipCollision.x = shipX;
@@ -110,16 +138,6 @@ void game()
             
             
         }
-
-        DrawRectangle(shipCollision.x, shipCollision.y, ship.width - 150, ship.height, RED);
-        DrawRectangle(225, 200, trash1.width, trash1.height,RED);
-        DrawRectangle(430, 160, trash2.width, trash2.height,RED);
-        DrawRectangle(625, 190, trash3.width, trash3.height,RED);
-        DrawRectangle(828, 140, trash4.width, trash4.height, RED);
-        DrawRectangle(1022, 202, trash5.width, trash5.height,RED);
-        DrawRectangle(1223, 145, trash6.width, trash6.height  ,RED);
-        DrawRectangle(1425, 202, trash7.width, trash7.height ,RED);
-        DrawRectangle(1625, 144, trash8.width, trash8.height,RED);
         DrawCircleV(ballPosition, 10, BLACK);
         HideCursor();
         ClearBackground(BLUE);
@@ -249,5 +267,8 @@ void removeQuestion()
 
 void task()
 {
+    BeginDrawing();
+    ClearBackground(WHITE);
 
+    EndDrawing();
 }
