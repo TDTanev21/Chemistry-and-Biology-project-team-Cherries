@@ -15,7 +15,7 @@ void game()
     Texture2D ship = LoadTexture("../images/ship.png");
     double shipX = GetScreenHeight() / 2 + 245;
     double shipY = 650;
-    Rectangle shipCollision = { shipX, shipY, ship.width, ship.height };
+    Rectangle shipCollision = { shipX, shipY, ship.width -150, ship.height };
     Texture2D trash1 = LoadTexture("../images/bottle.png");
     Texture2D trash2 = LoadTexture("../images/plasticBag.png");
     Texture2D trash3 = LoadTexture("../images/trash.png");
@@ -25,14 +25,14 @@ void game()
     Texture2D trash7 = LoadTexture("../images/tire.png");
     Texture2D trash8 = LoadTexture("../images/notebook.png");
     Texture2D arrTrashes[8] = { trash1, trash2, trash3, trash4, trash5, trash6, trash7, trash8 };
-    Rectangle trash1Collision = { 300, 200, trash1.width, trash1.height };
-    Rectangle trash2Collision = { 1500, 400, trash2.width, trash2.height };
-    Rectangle trash3Collision = { 150, 670, trash3.width, trash3.height };
-    Rectangle trash4Collision = { 350, 500, trash4.width, trash4.height };
-    Rectangle trash5Collision = { 1400, 100, trash5.width, trash5.height };
-    Rectangle trash6Collision = { 1700, 675, trash6.width, trash6.height };
-    Rectangle trash7Collision = { 600, 50, trash7.width, trash7.height };
-    Rectangle trash8Collision = { 1200, 175, trash8.width, trash8.height };
+    Rectangle trash1Collision = {225, 200,  trash1.width, trash1.height };
+    Rectangle trash2Collision = {430, 160, trash2.width, trash2.height };
+    Rectangle trash3Collision = {625, 190,  trash3.width, trash3.height };
+    Rectangle trash4Collision = {828, 140, trash4.width, trash4.height  };
+    Rectangle trash5Collision = {1022, 202, trash5.width, trash5.height};
+    Rectangle trash6Collision = {1223, 145, trash6.width, trash6.height  };
+    Rectangle trash7Collision = {1425, 202, trash7.width, trash7.height };
+    Rectangle trash8Collision = {1625, 144, trash8.width, trash8.height};
     double trashPositionX = 300, trashPositionY = 200;
     Texture2D bg = LoadTexture("../images/gamebg.png");
     Rectangle bgRect[2] = { { 0, 0, bg.width, bg.height} , {0, -bg.height, bg.width, bg.height} };
@@ -69,9 +69,16 @@ void game()
         {
             shipY = 0;
         }
+        if (CheckCollisionRecs(shipCollision, trash1Collision))
+        {
+            shipY = 0;
+        }
 
+        shipCollision.x = shipX;
+        shipCollision.y = shipY;
 
         BeginDrawing();
+        
 
         for (int i = 0; i < 2; i++)
         {
@@ -99,16 +106,24 @@ void game()
             {
                 trashPositionX = 225;
                 trashPositionY = 200;
-               
             }
             
             
         }
-        
 
+        DrawRectangle(shipCollision.x, shipCollision.y, ship.width - 150, ship.height, RED);
+        DrawRectangle(225, 200, trash1.width, trash1.height,RED);
+        DrawRectangle(430, 160, trash2.width, trash2.height,RED);
+        DrawRectangle(625, 190, trash3.width, trash3.height,RED);
+        DrawRectangle(828, 140, trash4.width, trash4.height, RED);
+        DrawRectangle(1022, 202, trash5.width, trash5.height,RED);
+        DrawRectangle(1223, 145, trash6.width, trash6.height  ,RED);
+        DrawRectangle(1425, 202, trash7.width, trash7.height ,RED);
+        DrawRectangle(1625, 144, trash8.width, trash8.height,RED);
         DrawCircleV(ballPosition, 10, BLACK);
         HideCursor();
         ClearBackground(BLUE);
+
         EndDrawing();
     }
 }
@@ -232,4 +247,7 @@ void removeQuestion()
     }
 }
 
-void task();
+void task()
+{
+
+}

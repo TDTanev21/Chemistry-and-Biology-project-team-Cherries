@@ -27,4 +27,6 @@ void randomQuestion();
 //Makes it impossible to have the same question twice
 void removeQuestion();
  
+//Gives you question when you go to a trash
+void task();
 
