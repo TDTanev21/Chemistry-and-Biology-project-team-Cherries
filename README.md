@@ -76,6 +76,5 @@ git clone https://github.com/TDTanev21/Chemistry-and-Biology-project-team-Cherri
 
 ## 🎮 ECO Pirates
 
-<img height="600" width="1050" src = "Chemistry-and-biology-project/images/Rules_Menu.png"/>
-
 <img height="600" width="1050" src = "Chemistry-and-biology-project/images/Start _Menu.png"/>
+<img height="600" width="1050" src = "Chemistry-and-biology-project/images/Rules_Menu.png"/>
