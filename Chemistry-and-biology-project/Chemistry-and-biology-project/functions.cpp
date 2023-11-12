@@ -1,8 +1,8 @@
 #include "main.h"
 
 //global variables for question() and removeQuestion()
-string questionsArr[5] = { "1","2", "3","4","5" };
-string answers[5] = { "1", "2", "3", "4", "5" };
+string questionsArr[20] = { "Write down the molecular formula of two hydrogen atoms and one oxygen atom.","What kind of formula is shown? H---O---H", "What valency is oxygen?","There are 10 particles in the nucleus of an atom, and 2 electrons orbit around it. How many neutrons are in the nucleus?","How many hydrogen atoms are there in 3H2?", "The release of a mature egg in the ovary is called?","The inner shell of the eyeball is called?","In which structure in the eukaryotic cell is the hereditary information stored?","What is the name of the cell division that produces gametes?","What is the surface layer of the skin called?","How many parts are there in the heart?","How many protons are in Sodium?","How many chromosomes does the average human body have?","What does this symbol means in chemistry: O?","How many legs does the spider have?","What is the chemistry symbol for hydrogen?","Is it possible to create an embrioid out of monkey and an aligator(give your answer with yes or no)?","Which element you should collide with when you are burning something?","Is the whale a mammal?","What is the formule for nitrogen dioxide?"};
+string answers[20] = { "H2O", "structural", "2", "8", "6","ovulation","retina","kernel","meiosis","epidermis","four","11","46","Oxygen","8","H","No","O","Yes","NO2"};
 int questionsLength = 5;
 string currentQuestion;
 
@@ -15,7 +15,7 @@ void game()
     Texture2D ship = LoadTexture("../images/ship.png");
     double shipX = GetScreenHeight() / 2 + 245;
     double shipY = 650;
-    Rectangle shipCollision = { shipX, shipY, ship.width -150, ship.height };
+    Rectangle shipCollision = { shipX + 175, shipY + 26, ship.width / 2 - 175, ship.height / 2 };
     Texture2D trash1 = LoadTexture("../images/bottle.png");
     Texture2D trash2 = LoadTexture("../images/plasticBag.png");
     Texture2D trash3 = LoadTexture("../images/trash.png");
@@ -25,14 +25,14 @@ void game()
     Texture2D trash7 = LoadTexture("../images/tire.png");
     Texture2D trash8 = LoadTexture("../images/notebook.png");
     Texture2D arrTrashes[8] = { trash1, trash2, trash3, trash4, trash5, trash6, trash7, trash8 };
-    Rectangle trash1Collision = {225, 200,  trash1.width, trash1.height };
-    Rectangle trash2Collision = {430, 160, trash2.width, trash2.height };
-    Rectangle trash3Collision = {625, 190,  trash3.width, trash3.height };
-    Rectangle trash4Collision = {828, 140, trash4.width, trash4.height  };
-    Rectangle trash5Collision = {1022, 202, trash5.width, trash5.height};
-    Rectangle trash6Collision = {1223, 145, trash6.width, trash6.height  };
-    Rectangle trash7Collision = {1425, 202, trash7.width, trash7.height };
-    Rectangle trash8Collision = {1625, 144, trash8.width, trash8.height};
+    Rectangle trash1Collision = { 75, 165,  trash1.width, trash1.height };
+    Rectangle trash2Collision = { 430, 160, trash2.width, trash2.height };
+    Rectangle trash3Collision = { 625, 190,  trash3.width, trash3.height };
+    Rectangle trash4Collision = { 828, 140, trash4.width, trash4.height };
+    Rectangle trash5Collision = { 1022, 202, trash5.width, trash5.height };
+    Rectangle trash6Collision = { 1223, 145, trash6.width, trash6.height };
+    Rectangle trash7Collision = { 1425, 202, trash7.width, trash7.height };
+    Rectangle trash8Collision = { 1625, 144, trash8.width, trash8.height };
     double trashPositionX = 300, trashPositionY = 200;
     Texture2D bg = LoadTexture("../images/gamebg.png");
     Rectangle bgRect[2] = { { 0, 0, bg.width, bg.height} , {0, -bg.height, bg.width, bg.height} };
@@ -41,7 +41,7 @@ void game()
 
     
 
-
+   
     SetExitKey(KEY_ESCAPE);
 
 
@@ -71,13 +71,10 @@ void game()
         }
         if (CheckCollisionRecs(shipCollision, trash1Collision))
         {
-           
             task();
-            
         }
         if (CheckCollisionRecs(shipCollision, trash2Collision))
         {
-            
             task();
         }
         if (CheckCollisionRecs(shipCollision, trash3Collision))
@@ -104,6 +101,7 @@ void game()
         {
             task();
         }
+
 
         shipCollision.x = shipX;
         shipCollision.y = shipY;
@@ -141,7 +139,7 @@ void game()
             
             
         }
-        DrawRectangle(shipCollision.x, shipCollision.y, ship.width - 150, ship.height,RED);
+ 
         DrawCircleV(ballPosition, 10, BLACK);
         HideCursor();
         ClearBackground(BLUE);
@@ -271,8 +269,12 @@ void removeQuestion()
 
 void task()
 {
-    BeginDrawing();
-    ClearBackground(WHITE);
-    while(!IsKeyPressed(KEY_SPACE))
-    EndDrawing();
+    while(!WindowShouldClose())
+    {
+        
+        BeginDrawing();
+        ClearBackground(WHITE);
+        DrawText("What is the molecular struct of water?", 190, 165, 50, RED);
+        EndDrawing();
+    }
 }
