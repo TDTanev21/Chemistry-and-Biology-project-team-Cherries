@@ -14,7 +14,7 @@
 </p> 
 
 ## 📋 Description
-
+There were times when people decided to get better, to change themselves to a better reality and a different lifestyle, so that's why they all gathered all the trash on the planet together and put them on a big recycling ship. But the big ship crashed on an iceberg and all the garbage went floating in the ocean. Your task is to gather all the leftovers of the trash by completing chemistry and biology problems and questions. Good luck saving the whole planet ECO pirate.
 
 ## 🚀 Languages and Libraries
 <p align="left">
@@ -50,11 +50,19 @@
 
 
 ## 📥 Installation
+```
+You can download our project by using the green "Code" button.
 
-
+Or by pasting the following code in your CMD:
+git clone https://github.com/TDTanev21/Chemistry-and-Biology-project-team-Cherries.git
+```
 
 ## ⚙ Website Access
 
+*You can access our website by pasting this link into your browser.*
+```
+  https://github.com/TDTanev21/Chemistry-and-Biology-project-team-Cherries.git
+```
 
 ## 👨🏻‍💻 Team Members
 
