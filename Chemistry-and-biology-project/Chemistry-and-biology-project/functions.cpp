@@ -71,10 +71,13 @@ void game()
         }
         if (CheckCollisionRecs(shipCollision, trash1Collision))
         {
+           
             task();
+            
         }
         if (CheckCollisionRecs(shipCollision, trash2Collision))
         {
+            
             task();
         }
         if (CheckCollisionRecs(shipCollision, trash3Collision))
@@ -138,6 +141,7 @@ void game()
             
             
         }
+        DrawRectangle(shipCollision.x, shipCollision.y, ship.width - 150, ship.height,RED);
         DrawCircleV(ballPosition, 10, BLACK);
         HideCursor();
         ClearBackground(BLUE);
@@ -269,6 +273,6 @@ void task()
 {
     BeginDrawing();
     ClearBackground(WHITE);
-
+    while(!IsKeyPressed(KEY_SPACE))
     EndDrawing();
 }
