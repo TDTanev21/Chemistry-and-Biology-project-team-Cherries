@@ -1,7 +1,7 @@
 <h1 align="center">Cherries</h1>
 
 <p align = "center">
- <img height="300" width="350" alt="" src = "Chemistry-and-biology-project/images/logo.png" alt = "logo">
+ <img height="300" width="350" src = "Chemistry-and-biology-project/images/logo.png" alt = "logo">
 </p>
 
 <br>
@@ -76,6 +76,6 @@ git clone https://github.com/TDTanev21/Chemistry-and-Biology-project-team-Cherri
 
 ## 🎮 ECO Pirates
 
-<img src=""/>
+<img height="600" width="1050" src = "Chemistry-and-biology-project/images/Rules_Menu.png"/>
 
-<img src=""/>
+<img height="600" width="1050" src = "Chemistry-and-biology-project/images/Start _Menu.png"/>
