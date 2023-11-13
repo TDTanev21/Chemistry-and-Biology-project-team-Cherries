@@ -1058,10 +1058,10 @@ void gameOver()
     bool exitGame = false;
     Texture2D gameOver = LoadTexture("../images/loose.png");
     Texture2D quitAfterGame = LoadTexture("../images/quitAfterGamepng.png");
-    Rectangle quitAfterGameButton = { 800,200,quitAfterGame.width,quitAfterGame.height };
+    Rectangle quitAfterGameButton = { 800,300,quitAfterGame.width,quitAfterGame.height };
     while (!WindowShouldClose())
     {
-        if (CheckCollisionPointRec(mousePoint, quitAfterGameButton))
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointRec(mousePoint, quitAfterGameButton))
         {
             CloseWindow();
         }
@@ -1069,7 +1069,7 @@ void gameOver()
         ballPosition = GetMousePosition();
         BeginDrawing();
         DrawTexture(gameOver, 0, 0, WHITE);
-        DrawTexture(quitAfterGame, 800, 200, WHITE);
+        DrawTexture(quitAfterGame, 800, 300, WHITE);
         DrawCircleV(ballPosition, 10, BLACK);
         HideCursor();
         ClearBackground(WHITE);
