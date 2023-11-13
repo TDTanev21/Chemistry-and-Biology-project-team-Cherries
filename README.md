@@ -39,8 +39,7 @@ There were times when people decided to get better, to change themselves to a be
 <h4>Documents</h4>
   <ul>
     <li><a href="Chemistry-and-biology-project/Documentation/Cherries_Documentation.docx">Documentation</a></li>
-    <li><a href="Chemistry-and-biology-project/Documentation/">QA Test Plan</a></li>
-    <li><a href="Chemistry-and-biology-project/Documentation/">QA Table</a></li>
+    <li><a href="Chemistry-and-biology-project/Documentation/QA.xlsx">QA Table</a></li>
   </ul> 
 <h4>Presenting</h4>
   <ul>    
