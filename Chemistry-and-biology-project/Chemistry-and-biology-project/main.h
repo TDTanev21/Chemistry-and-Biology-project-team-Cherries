@@ -27,6 +27,13 @@ void randomQuestion();
 //Makes it impossible to have the same question twice
 void removeQuestion();
  
-//Gives you question when you go to a trash
-void task();
+//There are eight functions for the eight trahses which give the question
+void taskTr1();
+void taskTr2();
+void taskTr3();
+void taskTr4();
+void taskTr5();
+void taskTr6();
+void taskTr7();
+void taskTr8();
 

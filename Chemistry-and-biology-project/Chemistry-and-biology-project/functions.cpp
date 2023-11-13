@@ -71,35 +71,35 @@ void game()
         }
         if (CheckCollisionRecs(shipCollision, trash1Collision))
         {
-            task();
+            taskTr1();
         }
         if (CheckCollisionRecs(shipCollision, trash2Collision))
         {
-            task();
+            taskTr2();
         }
         if (CheckCollisionRecs(shipCollision, trash3Collision))
         {
-            task();
+            taskTr3();
         }
         if (CheckCollisionRecs(shipCollision, trash4Collision))
         {
-            task();
+            taskTr4();
         }
         if (CheckCollisionRecs(shipCollision, trash5Collision))
         {
-            task();
+            taskTr5();
         }
         if (CheckCollisionRecs(shipCollision, trash6Collision))
         {
-            task();
+            taskTr6();
         }
         if (CheckCollisionRecs(shipCollision, trash7Collision))
         {
-            task();
+            taskTr7();
         }
         if (CheckCollisionRecs(shipCollision, trash8Collision))
         {
-            task();
+            taskTr8();
         }
 
 
@@ -262,19 +262,126 @@ void removeQuestion()
                 questionsArr[j] = questionsArr[j + 1];
                 answers[j] = answers[j + 1];
             }
-
         }
     }
 }
-
-void task()
+void taskTr1()
 {
+   
+    while (!WindowShouldClose())
+    {
+        mousePoint = GetMousePosition();
+        ballPosition = GetMousePosition();
+        BeginDrawing();
+        DrawCircleV(ballPosition, 10, BLACK);
+        HideCursor();
+        ClearBackground(WHITE);
+        DrawText("Write down the molecular formula of two hydrogen atoms and one oxygen atom.", GetScreenWidth()/2 -800, GetScreenHeight() / 2 - 300, 40, GREEN);
+        EndDrawing();
+    }
+}
+void taskTr2()
+{
+  
+    while (!WindowShouldClose())
+    {
+        mousePoint = GetMousePosition();
+        ballPosition = GetMousePosition();
+        BeginDrawing();
+        DrawCircleV(ballPosition, 10, BLACK);
+        HideCursor();
+        ClearBackground(WHITE);
+        DrawText("Is the whale a mammal?(Yes/No question)", GetScreenWidth() / 2 - 600, GetScreenHeight() / 2 - 300, 40, GREEN);
+        EndDrawing();
+    }
+}
+void taskTr3()
+{
+    
     while(!WindowShouldClose())
     {
-        
+        mousePoint = GetMousePosition();
+        ballPosition = GetMousePosition();
         BeginDrawing();
+        DrawCircleV(ballPosition, 10, BLACK);
+        HideCursor();
         ClearBackground(WHITE);
-        DrawText("What is the molecular struct of water?", 190, 165, 50, RED);
+        DrawText("What does this symbol means in chemistry: O?", GetScreenWidth() / 2- 600, GetScreenHeight() / 2 - 300, 40, GREEN);
+        EndDrawing();
+    }
+}
+void taskTr4()
+{
+   
+    while (!WindowShouldClose())
+    {
+        mousePoint = GetMousePosition();
+        ballPosition = GetMousePosition();
+        BeginDrawing();
+        DrawCircleV(ballPosition, 10, BLACK);
+        HideCursor();
+        ClearBackground(WHITE);
+        DrawText("How many legs does the spider have?", GetScreenWidth() / 2, GetScreenHeight() / 2, 40, GREEN);
+        EndDrawing();
+    }
+}
+void taskTr5()
+{
+ 
+    while (!WindowShouldClose())
+    {
+        mousePoint = GetMousePosition();
+        ballPosition = GetMousePosition();
+        BeginDrawing();
+        DrawCircleV(ballPosition, 10, BLACK);
+        HideCursor();
+        ClearBackground(WHITE);
+        DrawText("What is the surface layer of the skin called?", GetScreenWidth() / 2- 600, GetScreenHeight() / 2- 300, 40, GREEN);
+        EndDrawing();
+    }
+}
+void taskTr6()
+{
+   
+    while (!WindowShouldClose())
+    {
+        mousePoint = GetMousePosition();
+        ballPosition = GetMousePosition();
+        BeginDrawing();
+        DrawCircleV(ballPosition, 10, BLACK);
+        HideCursor();
+        ClearBackground(WHITE);
+        DrawText("What is the chemistry symbol for hydrogen?", GetScreenWidth() / 2 - 600, GetScreenHeight() / 2 - 300, 40, GREEN);
+        EndDrawing();
+    }
+}
+void taskTr7()
+{
+
+    while (!WindowShouldClose())
+    {
+        mousePoint = GetMousePosition();
+        ballPosition = GetMousePosition();
+        BeginDrawing();
+        DrawCircleV(ballPosition, 10, BLACK);
+        HideCursor();
+        ClearBackground(WHITE);
+        DrawText("Which element you should collide with when you are burning something?", GetScreenWidth() / 2 - 700, GetScreenHeight() / 2 - 300, 40, GREEN);
+        EndDrawing();
+    }
+}
+void taskTr8()
+{
+    
+    while (!WindowShouldClose())
+    {
+        mousePoint = GetMousePosition();
+        ballPosition = GetMousePosition();
+        BeginDrawing();
+        DrawCircleV(ballPosition, 10, BLACK);
+        HideCursor();
+        ClearBackground(WHITE);
+        DrawText("How many chromosomes does the average human body have?", GetScreenWidth() / 2 - 600, GetScreenHeight() / 2, 40, RED);
         EndDrawing();
     }
 }
