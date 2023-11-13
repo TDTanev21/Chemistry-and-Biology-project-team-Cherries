@@ -7,10 +7,10 @@
 <br>
 
 <p align = "center">
-  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/codingburgas/Chemistry-and-biology-project?style=flat-square">
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/codingburgas/Chemistry-and-biology-project?style=flat-square">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/codingburgas/Chemistry-and-biology-project?style=flat-square">
-  <img src="https://img.shields.io/github/languages/count/codingburgas/Chemistry-and-biology-project?style=flat-square">
+  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/TDTanev21/Chemistry-and-biology-project?style=flat-square">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/TDTanev21/Chemistry-and-biology-project?style=flat-square">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/TDTanev21/Chemistry-and-biology-project?style=flat-square">
+  <img src="https://img.shields.io/github/languages/count/TDTanev21/Chemistry-and-biology-project?style=flat-square">
 </p> 
 
 ## 📋 Description
@@ -38,9 +38,9 @@ There were times when people decided to get better, to change themselves to a be
  
 <h4>Documents</h4>
   <ul>
-    <li><a href="">Documentation</a></li>
-    <li><a href="">QA Test Plan</a></li>
-    <li><a href="">QA Table</a></li>
+    <li><a href="Chemistry-and-biology-project/Documentation/Cherries_Documentation">Documentation</a></li>
+    <li><a href="Chemistry-and-biology-project/Documentation/">QA Test Plan</a></li>
+    <li><a href="Chemistry-and-biology-project/Documentation/">QA Table</a></li>
   </ul> 
 <h4>Presenting</h4>
   <ul>    
