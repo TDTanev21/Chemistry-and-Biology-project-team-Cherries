@@ -299,6 +299,10 @@ void taskTr1()
                     {
                         gameWon();
                     }
+                    else
+                    {
+                        gameOver();
+                    }
                 }
             }
             BeginDrawing();
@@ -394,6 +398,10 @@ void taskTr2()
                 {
                     gameWon();
                 }
+                else
+                {
+                    gameOver();
+                }
             }
         }
         BeginDrawing();
@@ -487,6 +495,10 @@ void taskTr3()
                 if (name[i] == '2')
                 {
                     gameWon();
+                }
+                else
+                {
+                    gameOver();
                 }
             }
         }
@@ -582,6 +594,10 @@ void taskTr4()
                 {
                     gameWon();
                 }
+                else
+                {
+                    gameOver();
+                }
             }
         }
         BeginDrawing();
@@ -675,6 +691,10 @@ void taskTr5()
                 if (name[i] == '4')
                 {
                     gameWon();
+                }
+                else
+                {
+                    gameOver();
                 }
             }
         }
@@ -770,6 +790,10 @@ void taskTr6()
                 {
                     gameWon();
                 }
+                else
+                {
+                    gameOver();
+                }
             }
         }
         BeginDrawing();
@@ -860,9 +884,13 @@ void taskTr7()
         {
             for (int i = 0; i < letterCount; i++)
             {
-                if (name[i] == 'E' && name[i + 1] == 'p' && name[i + 2] == 'i' && name[i + 3] == 'd' && name[i + 4] == 'e' && name[i + 5] == 'r' && name[i + 6] == 'm' && name[i + 7] == 'i' && name[i + 8] == 's' && name[i + 6] == 's')
+                if (name[i] == 'R' && name[i + 1] == 'e' && name[i + 2] == 't' && name[i + 3] == 'i' && name[i + 4] == 'n' && name[i + 5] == 'a' )
                 {
                     gameWon();
+                }
+                else
+                {
+                    gameOver();
                 }
             }
         }
@@ -870,7 +898,7 @@ void taskTr7()
 
         ClearBackground(RAYWHITE);
 
-        DrawText("What is the surface layer of the skin called?", GetScreenWidth() / 2 - 575, 400, 40, GREEN);
+        DrawText("The inner shell of the eyeball is called?", GetScreenWidth() / 2 - 575, 400, 40, GREEN);
 
         DrawRectangleRec(textBox, LIGHTGRAY);
         if (mouseOnText) DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, RED);
@@ -958,6 +986,10 @@ void taskTr8()
                 {
                     gameWon();
                 }
+                else
+                {
+                    gameOver();
+                }
             }
         }
         BeginDrawing();
@@ -1000,13 +1032,44 @@ bool IsAnyKeyPressed()
 
 void gameWon()
 {
+    bool exitGame = false;
     Texture2D gameWon = LoadTexture("../images/win.png");
+    Texture2D quitAfterGame = LoadTexture("../images/quitAfterGamepng.png");
+    Rectangle quitAfterGameButton = { 800,200,quitAfterGame.width,quitAfterGame.height };
     while (!WindowShouldClose())
     {
+        if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointRec(mousePoint, quitAfterGameButton))
+        {
+            CloseWindow();
+        }
         mousePoint = GetMousePosition();
         ballPosition = GetMousePosition();
         BeginDrawing();
         DrawTexture(gameWon, 0, 0, WHITE);
+        DrawTexture(quitAfterGame, 800,200, WHITE);
+        DrawCircleV(ballPosition, 10, BLACK);
+        HideCursor();
+        ClearBackground(WHITE);
+        EndDrawing();
+    }
+}
+void gameOver()
+{
+    bool exitGame = false;
+    Texture2D gameOver = LoadTexture("../images/loose.png");
+    Texture2D quitAfterGame = LoadTexture("../images/quitAfterGamepng.png");
+    Rectangle quitAfterGameButton = { 800,200,quitAfterGame.width,quitAfterGame.height };
+    while (!WindowShouldClose())
+    {
+        if (CheckCollisionPointRec(mousePoint, quitAfterGameButton))
+        {
+            CloseWindow();
+        }
+        mousePoint = GetMousePosition();
+        ballPosition = GetMousePosition();
+        BeginDrawing();
+        DrawTexture(gameOver, 0, 0, WHITE);
+        DrawTexture(quitAfterGame, 800, 200, WHITE);
         DrawCircleV(ballPosition, 10, BLACK);
         HideCursor();
         ClearBackground(WHITE);

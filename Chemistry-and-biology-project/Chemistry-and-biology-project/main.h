@@ -41,3 +41,6 @@ void taskTr8();
 
 //The function which sends you to the game won menu
 void gameWon();
+
+//The function which sends you to the game over menu
+void gameOver();
