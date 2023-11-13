@@ -1,21 +1,7 @@
 #include "main.h"
-
-//global variables for question() and removeQuestion()
-string questionsArr[20] = { "Write down the molecular formula of two hydrogen atoms and one oxygen atom.","What kind of formula is shown? H---O---H", "What valency is oxygen?","There are 10 particles in the nucleus of an atom, and 2 electrons orbit around it. How many neutrons are in the nucleus?","How many hydrogen atoms are there in 3H2?", "The release of a mature egg in the ovary is called?","The inner shell of the eyeball is called?","In which structure in the eukaryotic cell is the hereditary information stored?","What is the name of the cell division that produces gametes?","What is the surface layer of the skin called?","How many parts are there in the heart?","How many protons are in Sodium?","How many chromosomes does the average human body have?","What does this symbol means in chemistry: O?","How many legs does the spider have?","What is the chemistry symbol for hydrogen?","Is it possible to create an embrioid out of monkey and an aligator(give your answer with yes or no)?","Which element you should collide with when you are burning something?","Is the whale a mammal?","What is the formule for nitrogen dioxide?"};
-string answers[20] = { "H2O", "structural", "2", "8", "6","ovulation","retina","kernel","meiosis","epidermis","four","11","46","Oxygen","8","H","No","O","Yes","NO2"};
-int questionsLength = 5;
-string currentQuestion;
-
-
-
-
 void game()
 {
     //variables for game()
-    Texture2D ship = LoadTexture("../images/ship.png");
-    double shipX = GetScreenHeight() / 2 + 245;
-    double shipY = 650;
-    Rectangle shipCollision = { shipX + 175, shipY + 26, ship.width / 2 - 175, ship.height / 2 };
     Texture2D trash1 = LoadTexture("../images/bottle.png");
     Texture2D trash2 = LoadTexture("../images/plasticBag.png");
     Texture2D trash3 = LoadTexture("../images/trash.png");
@@ -25,6 +11,10 @@ void game()
     Texture2D trash7 = LoadTexture("../images/tire.png");
     Texture2D trash8 = LoadTexture("../images/notebook.png");
     Texture2D arrTrashes[8] = { trash1, trash2, trash3, trash4, trash5, trash6, trash7, trash8 };
+    Texture2D ship = LoadTexture("../images/ship.png");
+    double shipX = GetScreenHeight() / 2 + 245;
+    double shipY = 650;
+    Rectangle shipCollision = { shipX + 175, shipY + 26, ship.width / 2 - 175, ship.height / 2 };
     Rectangle trash1Collision = { 75, 165,  trash1.width, trash1.height };
     Rectangle trash2Collision = { 430, 160, trash2.width, trash2.height };
     Rectangle trash3Collision = { 625, 190,  trash3.width, trash3.height };
@@ -243,33 +233,11 @@ void rulesFunction()
     }
 }
 
-void randomQuestion()
-{
-    random_device(rd);
-    uniform_int_distribution<int> dist(0, (questionsLength > 1) ? questionsLength - 1 : 1);
-    currentQuestion = questionsArr[dist(rd)];
-
-}
-void removeQuestion()
-{
-    for (int i = 0; i < 14; i++)
-    {
-        if (questionsArr[i] == currentQuestion)
-        {
-            questionsLength -= 1;
-            for (int j = i; j < questionsLength; j++)
-            {
-                questionsArr[j] = questionsArr[j + 1];
-                answers[j] = answers[j + 1];
-            }
-        }
-    }
-}
 void taskTr1()
 {
    
    
-    
+        bool isAnswerTrue = false;
         
         const int screenWidth = 800;
         const int screenHeight = 450;
@@ -282,6 +250,8 @@ void taskTr1()
         bool mouseOnText = false;
 
         int framesCounter = 0;
+        Texture2D submitAnswer = LoadTexture("../images/submitAnswer.png");
+        Rectangle submitRec = { GetScreenWidth() / 2 - 115,700,submitAnswer.width,submitAnswer.height };
 
         SetTargetFPS(60);               
         
@@ -321,8 +291,17 @@ void taskTr1()
 
             if (mouseOnText) framesCounter++;
             else framesCounter = 0;
+            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(mousePoint, submitRec))
+            {
+                for (int i = 0; i < letterCount; i++)
+                {
+                    if (name[i] == 'H' && name[i + 1] == '2' && name[i + 2] == 'O')
+                    {
+                        gameWon();
+                    }
+                }
+            }
             BeginDrawing();
-            DrawCircleV(ballPosition, 10, BLACK);
            
             ClearBackground(RAYWHITE);
 
@@ -333,6 +312,7 @@ void taskTr1()
             else DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, DARKGRAY);
 
             DrawText(name, (int)textBox.x + 5, (int)textBox.y + 8, 40, MAROON);
+            DrawTexture(submitAnswer, GetScreenWidth() / 2 -115, 700, WHITE);
 
             DrawText(TextFormat("INPUT CHARS: %i/%i", letterCount, 9), GetScreenWidth()/2 -75, 625, 20, GREEN);
 
@@ -344,25 +324,90 @@ void taskTr1()
                 }
                 else DrawText("Press BACKSPACE to delete chars...", GetScreenWidth() / 2 - 800, GetScreenHeight() / 2 - 300, 40, GREEN);
             }
-
+            DrawCircleV(ballPosition, 10, BLACK);
             EndDrawing();
-
         }
 }
 
 void taskTr2()
 {
   
+    const int screenWidth = 800;
+    const int screenHeight = 450;
+
+
+    char name[9 + 1] = "\0";
+    int letterCount = 0;
+
+    Rectangle textBox = { GetScreenWidth() / 2 - 150, 500, 350, 100 };
+    bool mouseOnText = false;
+
+    int framesCounter = 0;
+
+    SetTargetFPS(60);
+
     while (!WindowShouldClose())
     {
         mousePoint = GetMousePosition();
         ballPosition = GetMousePosition();
+        if (CheckCollisionPointRec(mousePoint, textBox)) mouseOnText = true;
+        else mouseOnText = false;
+
+        if (mouseOnText)
+        {
+            SetMouseCursor(MOUSE_CURSOR_IBEAM);
+
+            int key = GetCharPressed();
+
+            while (key > 0)
+            {
+                if ((key >= 32) && (key <= 125) && (letterCount < 9))
+                {
+                    name[letterCount] = (char)key;
+                    name[letterCount + 1] = '\0';
+                    letterCount++;
+                }
+
+                key = GetCharPressed();
+            }
+
+            if (IsKeyPressed(KEY_BACKSPACE))
+            {
+                letterCount--;
+                if (letterCount < 0) letterCount = 0;
+                name[letterCount] = '\0';
+            }
+        }
+        else SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+
+        if (mouseOnText) framesCounter++;
+        else framesCounter = 0;
         BeginDrawing();
         DrawCircleV(ballPosition, 10, BLACK);
-        HideCursor();
-        ClearBackground(WHITE);
+
+        ClearBackground(RAYWHITE);
+
         DrawText("Is the whale a mammal?(Yes/No question)", GetScreenWidth() / 2 - 600, GetScreenHeight() / 2 - 300, 40, GREEN);
+
+        DrawRectangleRec(textBox, LIGHTGRAY);
+        if (mouseOnText) DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, RED);
+        else DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, DARKGRAY);
+
+        DrawText(name, (int)textBox.x + 5, (int)textBox.y + 8, 40, MAROON);
+
+        DrawText(TextFormat("INPUT CHARS: %i/%i", letterCount, 9), GetScreenWidth() / 2 - 75, 625, 20, GREEN);
+
+        if (mouseOnText)
+        {
+            if (letterCount < 9)
+            {
+                if (((framesCounter / 20) % 2) == 0) DrawText("_", (int)textBox.x + 8 + MeasureText(name, 40), (int)textBox.y + 12, 40, MAROON);
+            }
+            else DrawText("Press BACKSPACE to delete chars...", GetScreenWidth() / 2 - 800, GetScreenHeight() / 2 - 300, 40, GREEN);
+        }
+
         EndDrawing();
+
     }
 }
 void taskTr3()
@@ -463,4 +508,21 @@ bool IsAnyKeyPressed()
     if ((key >= 32) && (key <= 126)) keyPressed = true;
 
     return keyPressed;
+}
+
+
+void gameWon()
+{
+    Texture2D gameWon = LoadTexture("../images/win.png");
+    while (!WindowShouldClose())
+    {
+        mousePoint = GetMousePosition();
+        ballPosition = GetMousePosition();
+        BeginDrawing();
+        DrawTexture(gameWon, 0, 0, WHITE);
+        DrawCircleV(ballPosition, 10, BLACK);
+        HideCursor();
+        ClearBackground(WHITE);
+        EndDrawing();
+    }
 }

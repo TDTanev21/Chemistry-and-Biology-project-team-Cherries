@@ -9,6 +9,7 @@ extern float HEIGHT;
 extern Vector2 ballPosition;
 extern Vector2 mousePoint;
 
+
 //Makes the size of the screen during the whole game and locks the FPS to 60
 void init();
 
@@ -37,3 +38,6 @@ void taskTr6();
 void taskTr7();
 void taskTr8();
 
+
+//The function which sends you to the game won menu
+void gameWon();
