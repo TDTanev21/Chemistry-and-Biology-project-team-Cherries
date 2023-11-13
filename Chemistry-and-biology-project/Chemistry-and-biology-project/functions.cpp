@@ -332,6 +332,8 @@ void taskTr1()
 void taskTr2()
 {
   
+    bool isAnswerTrue = false;
+
     const int screenWidth = 800;
     const int screenHeight = 450;
 
@@ -343,6 +345,8 @@ void taskTr2()
     bool mouseOnText = false;
 
     int framesCounter = 0;
+    Texture2D submitAnswer = LoadTexture("../images/submitAnswer.png");
+    Rectangle submitRec = { GetScreenWidth() / 2 - 115,700,submitAnswer.width,submitAnswer.height };
 
     SetTargetFPS(60);
 
@@ -382,18 +386,28 @@ void taskTr2()
 
         if (mouseOnText) framesCounter++;
         else framesCounter = 0;
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(mousePoint, submitRec))
+        {
+            for (int i = 0; i < letterCount; i++)
+            {
+                if (name[i] == 'Y' && name[i + 1] == 'e' && name[i + 2] == 's')
+                {
+                    gameWon();
+                }
+            }
+        }
         BeginDrawing();
-        DrawCircleV(ballPosition, 10, BLACK);
 
         ClearBackground(RAYWHITE);
 
-        DrawText("Is the whale a mammal?(Yes/No question)", GetScreenWidth() / 2 - 600, GetScreenHeight() / 2 - 300, 40, GREEN);
+        DrawText("Is the whale a mammal?", GetScreenWidth() / 2 - 215, 400, 40, GREEN);
 
         DrawRectangleRec(textBox, LIGHTGRAY);
         if (mouseOnText) DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, RED);
         else DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, DARKGRAY);
 
         DrawText(name, (int)textBox.x + 5, (int)textBox.y + 8, 40, MAROON);
+        DrawTexture(submitAnswer, GetScreenWidth() / 2 - 115, 700, WHITE);
 
         DrawText(TextFormat("INPUT CHARS: %i/%i", letterCount, 9), GetScreenWidth() / 2 - 75, 625, 20, GREEN);
 
@@ -405,98 +419,571 @@ void taskTr2()
             }
             else DrawText("Press BACKSPACE to delete chars...", GetScreenWidth() / 2 - 800, GetScreenHeight() / 2 - 300, 40, GREEN);
         }
-
+        DrawCircleV(ballPosition, 10, BLACK);
         EndDrawing();
-
     }
 }
 void taskTr3()
 {
     
-    while(!WindowShouldClose())
+    bool isAnswerTrue = false;
+
+    const int screenWidth = 800;
+    const int screenHeight = 450;
+
+
+    char name[9 + 1] = "\0";
+    int letterCount = 0;
+
+    Rectangle textBox = { GetScreenWidth() / 2 - 150, 500, 350, 100 };
+    bool mouseOnText = false;
+
+    int framesCounter = 0;
+    Texture2D submitAnswer = LoadTexture("../images/submitAnswer.png");
+    Rectangle submitRec = { GetScreenWidth() / 2 - 115,700,submitAnswer.width,submitAnswer.height };
+
+    SetTargetFPS(60);
+
+    while (!WindowShouldClose())
     {
         mousePoint = GetMousePosition();
         ballPosition = GetMousePosition();
+        if (CheckCollisionPointRec(mousePoint, textBox)) mouseOnText = true;
+        else mouseOnText = false;
+
+        if (mouseOnText)
+        {
+            SetMouseCursor(MOUSE_CURSOR_IBEAM);
+
+            int key = GetCharPressed();
+
+            while (key > 0)
+            {
+                if ((key >= 32) && (key <= 125) && (letterCount < 9))
+                {
+                    name[letterCount] = (char)key;
+                    name[letterCount + 1] = '\0';
+                    letterCount++;
+                }
+
+                key = GetCharPressed();
+            }
+
+            if (IsKeyPressed(KEY_BACKSPACE))
+            {
+                letterCount--;
+                if (letterCount < 0) letterCount = 0;
+                name[letterCount] = '\0';
+            }
+        }
+        else SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+
+        if (mouseOnText) framesCounter++;
+        else framesCounter = 0;
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(mousePoint, submitRec))
+        {
+            for (int i = 0; i < letterCount; i++)
+            {
+                if (name[i] == '2')
+                {
+                    gameWon();
+                }
+            }
+        }
         BeginDrawing();
+
+        ClearBackground(RAYWHITE);
+
+        DrawText("What valency is oxygen?", GetScreenWidth() / 2 - 215, 400, 40, GREEN);
+
+        DrawRectangleRec(textBox, LIGHTGRAY);
+        if (mouseOnText) DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, RED);
+        else DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, DARKGRAY);
+
+        DrawText(name, (int)textBox.x + 5, (int)textBox.y + 8, 40, MAROON);
+        DrawTexture(submitAnswer, GetScreenWidth() / 2 - 115, 700, WHITE);
+
+        DrawText(TextFormat("INPUT CHARS: %i/%i", letterCount, 9), GetScreenWidth() / 2 - 75, 625, 20, GREEN);
+
+        if (mouseOnText)
+        {
+            if (letterCount < 9)
+            {
+                if (((framesCounter / 20) % 2) == 0) DrawText("_", (int)textBox.x + 8 + MeasureText(name, 40), (int)textBox.y + 12, 40, MAROON);
+            }
+            else DrawText("Press BACKSPACE to delete chars...", GetScreenWidth() / 2 - 800, GetScreenHeight() / 2 - 300, 40, GREEN);
+        }
         DrawCircleV(ballPosition, 10, BLACK);
-        HideCursor();
-        ClearBackground(WHITE);
-        DrawText("What does this symbol means in chemistry: O?", GetScreenWidth() / 2- 600, GetScreenHeight() / 2 - 300, 40, GREEN);
         EndDrawing();
     }
 }
 void taskTr4()
 {
    
+    bool isAnswerTrue = false;
+
+    const int screenWidth = 800;
+    const int screenHeight = 450;
+
+
+    char name[9 + 1] = "\0";
+    int letterCount = 0;
+
+    Rectangle textBox = { GetScreenWidth() / 2 - 150, 500, 350, 100 };
+    bool mouseOnText = false;
+
+    int framesCounter = 0;
+    Texture2D submitAnswer = LoadTexture("../images/submitAnswer.png");
+    Rectangle submitRec = { GetScreenWidth() / 2 - 115,700,submitAnswer.width,submitAnswer.height };
+
+    SetTargetFPS(60);
+
     while (!WindowShouldClose())
     {
         mousePoint = GetMousePosition();
         ballPosition = GetMousePosition();
+        if (CheckCollisionPointRec(mousePoint, textBox)) mouseOnText = true;
+        else mouseOnText = false;
+
+        if (mouseOnText)
+        {
+            SetMouseCursor(MOUSE_CURSOR_IBEAM);
+
+            int key = GetCharPressed();
+
+            while (key > 0)
+            {
+                if ((key >= 32) && (key <= 125) && (letterCount < 9))
+                {
+                    name[letterCount] = (char)key;
+                    name[letterCount + 1] = '\0';
+                    letterCount++;
+                }
+
+                key = GetCharPressed();
+            }
+
+            if (IsKeyPressed(KEY_BACKSPACE))
+            {
+                letterCount--;
+                if (letterCount < 0) letterCount = 0;
+                name[letterCount] = '\0';
+            }
+        }
+        else SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+
+        if (mouseOnText) framesCounter++;
+        else framesCounter = 0;
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(mousePoint, submitRec))
+        {
+            for (int i = 0; i < letterCount; i++)
+            {
+                if (name[i] == '6')
+                {
+                    gameWon();
+                }
+            }
+        }
         BeginDrawing();
+
+        ClearBackground(RAYWHITE);
+
+        DrawText("How many hydrogen atoms are there in 3H2?", GetScreenWidth() / 2 - 400, 400, 40, GREEN);
+
+        DrawRectangleRec(textBox, LIGHTGRAY);
+        if (mouseOnText) DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, RED);
+        else DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, DARKGRAY);
+
+        DrawText(name, (int)textBox.x + 5, (int)textBox.y + 8, 40, MAROON);
+        DrawTexture(submitAnswer, GetScreenWidth() / 2 - 115, 700, WHITE);
+
+        DrawText(TextFormat("INPUT CHARS: %i/%i", letterCount, 9), GetScreenWidth() / 2 - 75, 625, 20, GREEN);
+
+        if (mouseOnText)
+        {
+            if (letterCount < 9)
+            {
+                if (((framesCounter / 20) % 2) == 0) DrawText("_", (int)textBox.x + 8 + MeasureText(name, 40), (int)textBox.y + 12, 40, MAROON);
+            }
+            else DrawText("Press BACKSPACE to delete chars...", GetScreenWidth() / 2 - 800, GetScreenHeight() / 2 - 300, 40, GREEN);
+        }
         DrawCircleV(ballPosition, 10, BLACK);
-        HideCursor();
-        ClearBackground(WHITE);
-        DrawText("How many legs does the spider have?", GetScreenWidth() / 2, GetScreenHeight() / 2, 40, GREEN);
         EndDrawing();
     }
 }
 void taskTr5()
 {
  
+    bool isAnswerTrue = false;
+
+    const int screenWidth = 800;
+    const int screenHeight = 450;
+
+
+    char name[9 + 1] = "\0";
+    int letterCount = 0;
+
+    Rectangle textBox = { GetScreenWidth() / 2 - 150, 500, 350, 100 };
+    bool mouseOnText = false;
+
+    int framesCounter = 0;
+    Texture2D submitAnswer = LoadTexture("../images/submitAnswer.png");
+    Rectangle submitRec = { GetScreenWidth() / 2 - 115,700,submitAnswer.width,submitAnswer.height };
+
+    SetTargetFPS(60);
+
     while (!WindowShouldClose())
     {
         mousePoint = GetMousePosition();
         ballPosition = GetMousePosition();
+        if (CheckCollisionPointRec(mousePoint, textBox)) mouseOnText = true;
+        else mouseOnText = false;
+
+        if (mouseOnText)
+        {
+            SetMouseCursor(MOUSE_CURSOR_IBEAM);
+
+            int key = GetCharPressed();
+
+            while (key > 0)
+            {
+                if ((key >= 32) && (key <= 125) && (letterCount < 9))
+                {
+                    name[letterCount] = (char)key;
+                    name[letterCount + 1] = '\0';
+                    letterCount++;
+                }
+
+                key = GetCharPressed();
+            }
+
+            if (IsKeyPressed(KEY_BACKSPACE))
+            {
+                letterCount--;
+                if (letterCount < 0) letterCount = 0;
+                name[letterCount] = '\0';
+            }
+        }
+        else SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+
+        if (mouseOnText) framesCounter++;
+        else framesCounter = 0;
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(mousePoint, submitRec))
+        {
+            for (int i = 0; i < letterCount; i++)
+            {
+                if (name[i] == '4')
+                {
+                    gameWon();
+                }
+            }
+        }
         BeginDrawing();
+
+        ClearBackground(RAYWHITE);
+
+        DrawText("How many parts are there in the heart?", GetScreenWidth() / 2 - 375, 400, 40, GREEN);
+
+        DrawRectangleRec(textBox, LIGHTGRAY);
+        if (mouseOnText) DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, RED);
+        else DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, DARKGRAY);
+
+        DrawText(name, (int)textBox.x + 5, (int)textBox.y + 8, 40, MAROON);
+        DrawTexture(submitAnswer, GetScreenWidth() / 2 - 115, 700, WHITE);
+
+        DrawText(TextFormat("INPUT CHARS: %i/%i", letterCount, 9), GetScreenWidth() / 2 - 75, 625, 20, GREEN);
+
+        if (mouseOnText)
+        {
+            if (letterCount < 9)
+            {
+                if (((framesCounter / 20) % 2) == 0) DrawText("_", (int)textBox.x + 8 + MeasureText(name, 40), (int)textBox.y + 12, 40, MAROON);
+            }
+            else DrawText("Press BACKSPACE to delete chars...", GetScreenWidth() / 2 - 800, GetScreenHeight() / 2 - 300, 40, GREEN);
+        }
         DrawCircleV(ballPosition, 10, BLACK);
-        HideCursor();
-        ClearBackground(WHITE);
-        DrawText("What is the surface layer of the skin called?", GetScreenWidth() / 2- 600, GetScreenHeight() / 2- 300, 40, GREEN);
         EndDrawing();
     }
 }
 void taskTr6()
 {
    
+    bool isAnswerTrue = false;
+
+    const int screenWidth = 800;
+    const int screenHeight = 450;
+
+
+    char name[9 + 1] = "\0";
+    int letterCount = 0;
+
+    Rectangle textBox = { GetScreenWidth() / 2 - 150, 500, 350, 100 };
+    bool mouseOnText = false;
+
+    int framesCounter = 0;
+    Texture2D submitAnswer = LoadTexture("../images/submitAnswer.png");
+    Rectangle submitRec = { GetScreenWidth() / 2 - 115,700,submitAnswer.width,submitAnswer.height };
+
+    SetTargetFPS(60);
+
     while (!WindowShouldClose())
     {
         mousePoint = GetMousePosition();
         ballPosition = GetMousePosition();
+        if (CheckCollisionPointRec(mousePoint, textBox)) mouseOnText = true;
+        else mouseOnText = false;
+
+        if (mouseOnText)
+        {
+            SetMouseCursor(MOUSE_CURSOR_IBEAM);
+
+            int key = GetCharPressed();
+
+            while (key > 0)
+            {
+                if ((key >= 32) && (key <= 125) && (letterCount < 9))
+                {
+                    name[letterCount] = (char)key;
+                    name[letterCount + 1] = '\0';
+                    letterCount++;
+                }
+
+                key = GetCharPressed();
+            }
+
+            if (IsKeyPressed(KEY_BACKSPACE))
+            {
+                letterCount--;
+                if (letterCount < 0) letterCount = 0;
+                name[letterCount] = '\0';
+            }
+        }
+        else SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+
+        if (mouseOnText) framesCounter++;
+        else framesCounter = 0;
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(mousePoint, submitRec))
+        {
+            for (int i = 0; i < letterCount; i++)
+            {
+                if (name[i] == 'M' && name[i + 1] == 'e' && name[i + 2] == 'i' && name[i + 3] == 'o' && name[i + 4] == 's' && name[i + 5] == 'i' && name[i + 6] == 's')
+                {
+                    gameWon();
+                }
+            }
+        }
         BeginDrawing();
+
+        ClearBackground(RAYWHITE);
+
+        DrawText("What is the name of the cell division that produces gametes?", GetScreenWidth() / 2 - 575, 400, 40, GREEN);
+
+        DrawRectangleRec(textBox, LIGHTGRAY);
+        if (mouseOnText) DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, RED);
+        else DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, DARKGRAY);
+
+        DrawText(name, (int)textBox.x + 5, (int)textBox.y + 8, 40, MAROON);
+        DrawTexture(submitAnswer, GetScreenWidth() / 2 - 115, 700, WHITE);
+
+        DrawText(TextFormat("INPUT CHARS: %i/%i", letterCount, 9), GetScreenWidth() / 2 - 75, 625, 20, GREEN);
+
+        if (mouseOnText)
+        {
+            if (letterCount < 9)
+            {
+                if (((framesCounter / 20) % 2) == 0) DrawText("_", (int)textBox.x + 8 + MeasureText(name, 40), (int)textBox.y + 12, 40, MAROON);
+            }
+            else DrawText("Press BACKSPACE to delete chars...", GetScreenWidth() / 2 - 800, GetScreenHeight() / 2 - 300, 40, GREEN);
+        }
         DrawCircleV(ballPosition, 10, BLACK);
-        HideCursor();
-        ClearBackground(WHITE);
-        DrawText("What is the chemistry symbol for hydrogen?", GetScreenWidth() / 2 - 600, GetScreenHeight() / 2 - 300, 40, GREEN);
         EndDrawing();
     }
 }
 void taskTr7()
 {
 
+    bool isAnswerTrue = false;
+
+    const int screenWidth = 800;
+    const int screenHeight = 450;
+
+
+    char name[9 + 1] = "\0";
+    int letterCount = 0;
+
+    Rectangle textBox = { GetScreenWidth() / 2 - 150, 500, 350, 100 };
+    bool mouseOnText = false;
+
+    int framesCounter = 0;
+    Texture2D submitAnswer = LoadTexture("../images/submitAnswer.png");
+    Rectangle submitRec = { GetScreenWidth() / 2 - 115,700,submitAnswer.width,submitAnswer.height };
+
+    SetTargetFPS(60);
+
     while (!WindowShouldClose())
     {
         mousePoint = GetMousePosition();
         ballPosition = GetMousePosition();
+        if (CheckCollisionPointRec(mousePoint, textBox)) mouseOnText = true;
+        else mouseOnText = false;
+
+        if (mouseOnText)
+        {
+            SetMouseCursor(MOUSE_CURSOR_IBEAM);
+
+            int key = GetCharPressed();
+
+            while (key > 0)
+            {
+                if ((key >= 32) && (key <= 125) && (letterCount < 9))
+                {
+                    name[letterCount] = (char)key;
+                    name[letterCount + 1] = '\0';
+                    letterCount++;
+                }
+
+                key = GetCharPressed();
+            }
+
+            if (IsKeyPressed(KEY_BACKSPACE))
+            {
+                letterCount--;
+                if (letterCount < 0) letterCount = 0;
+                name[letterCount] = '\0';
+            }
+        }
+        else SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+
+        if (mouseOnText) framesCounter++;
+        else framesCounter = 0;
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(mousePoint, submitRec))
+        {
+            for (int i = 0; i < letterCount; i++)
+            {
+                if (name[i] == 'E' && name[i + 1] == 'p' && name[i + 2] == 'i' && name[i + 3] == 'd' && name[i + 4] == 'e' && name[i + 5] == 'r' && name[i + 6] == 'm' && name[i + 7] == 'i' && name[i + 8] == 's' && name[i + 6] == 's')
+                {
+                    gameWon();
+                }
+            }
+        }
         BeginDrawing();
+
+        ClearBackground(RAYWHITE);
+
+        DrawText("What is the surface layer of the skin called?", GetScreenWidth() / 2 - 575, 400, 40, GREEN);
+
+        DrawRectangleRec(textBox, LIGHTGRAY);
+        if (mouseOnText) DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, RED);
+        else DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, DARKGRAY);
+
+        DrawText(name, (int)textBox.x + 5, (int)textBox.y + 8, 40, MAROON);
+        DrawTexture(submitAnswer, GetScreenWidth() / 2 - 115, 700, WHITE);
+
+        DrawText(TextFormat("INPUT CHARS: %i/%i", letterCount, 9), GetScreenWidth() / 2 - 75, 625, 20, GREEN);
+
+        if (mouseOnText)
+        {
+            if (letterCount < 9)
+            {
+                if (((framesCounter / 20) % 2) == 0) DrawText("_", (int)textBox.x + 8 + MeasureText(name, 40), (int)textBox.y + 12, 40, MAROON);
+            }
+            else DrawText("Press BACKSPACE to delete chars...", GetScreenWidth() / 2 - 800, GetScreenHeight() / 2 - 300, 40, GREEN);
+        }
         DrawCircleV(ballPosition, 10, BLACK);
-        HideCursor();
-        ClearBackground(WHITE);
-        DrawText("Which element you should collide with when you are burning something?", GetScreenWidth() / 2 - 700, GetScreenHeight() / 2 - 300, 40, GREEN);
         EndDrawing();
     }
 }
 void taskTr8()
 {
     
+    bool isAnswerTrue = false;
+
+    const int screenWidth = 800;
+    const int screenHeight = 450;
+
+
+    char name[9 + 1] = "\0";
+    int letterCount = 0;
+
+    Rectangle textBox = { GetScreenWidth() / 2 - 150, 500, 350, 100 };
+    bool mouseOnText = false;
+
+    int framesCounter = 0;
+    Texture2D submitAnswer = LoadTexture("../images/submitAnswer.png");
+    Rectangle submitRec = { GetScreenWidth() / 2 - 115,700,submitAnswer.width,submitAnswer.height };
+
+    SetTargetFPS(60);
+
     while (!WindowShouldClose())
     {
         mousePoint = GetMousePosition();
         ballPosition = GetMousePosition();
+        if (CheckCollisionPointRec(mousePoint, textBox)) mouseOnText = true;
+        else mouseOnText = false;
+
+        if (mouseOnText)
+        {
+            SetMouseCursor(MOUSE_CURSOR_IBEAM);
+
+            int key = GetCharPressed();
+
+            while (key > 0)
+            {
+                if ((key >= 32) && (key <= 125) && (letterCount < 9))
+                {
+                    name[letterCount] = (char)key;
+                    name[letterCount + 1] = '\0';
+                    letterCount++;
+                }
+
+                key = GetCharPressed();
+            }
+
+            if (IsKeyPressed(KEY_BACKSPACE))
+            {
+                letterCount--;
+                if (letterCount < 0) letterCount = 0;
+                name[letterCount] = '\0';
+            }
+        }
+        else SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+
+        if (mouseOnText) framesCounter++;
+        else framesCounter = 0;
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(mousePoint, submitRec))
+        {
+            for (int i = 0; i < letterCount; i++)
+            {
+                if (name[i] == '8')
+                {
+                    gameWon();
+                }
+            }
+        }
         BeginDrawing();
+
+        ClearBackground(RAYWHITE);
+
+        DrawText("How many legs does the spider have?", GetScreenWidth() / 2 - 215, 400, 40, GREEN);
+
+        DrawRectangleRec(textBox, LIGHTGRAY);
+        if (mouseOnText) DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, RED);
+        else DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, DARKGRAY);
+
+        DrawText(name, (int)textBox.x + 5, (int)textBox.y + 8, 40, MAROON);
+        DrawTexture(submitAnswer, GetScreenWidth() / 2 - 115, 700, WHITE);
+
+        DrawText(TextFormat("INPUT CHARS: %i/%i", letterCount, 9), GetScreenWidth() / 2 - 75, 625, 20, GREEN);
+
+        if (mouseOnText)
+        {
+            if (letterCount < 9)
+            {
+                if (((framesCounter / 20) % 2) == 0) DrawText("_", (int)textBox.x + 8 + MeasureText(name, 40), (int)textBox.y + 12, 40, MAROON);
+            }
+            else DrawText("Press BACKSPACE to delete chars...", GetScreenWidth() / 2 - 800, GetScreenHeight() / 2 - 300, 40, GREEN);
+        }
         DrawCircleV(ballPosition, 10, BLACK);
-        HideCursor();
-        ClearBackground(WHITE);
-        DrawText("How many chromosomes does the average human body have?", GetScreenWidth() / 2 - 600, GetScreenHeight() / 2, 40, RED);
         EndDrawing();
     }
 }
