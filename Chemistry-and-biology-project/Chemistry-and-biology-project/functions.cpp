@@ -268,18 +268,88 @@ void removeQuestion()
 void taskTr1()
 {
    
-    while (!WindowShouldClose())
-    {
-        mousePoint = GetMousePosition();
-        ballPosition = GetMousePosition();
-        BeginDrawing();
-        DrawCircleV(ballPosition, 10, BLACK);
-        HideCursor();
-        ClearBackground(WHITE);
-        DrawText("Write down the molecular formula of two hydrogen atoms and one oxygen atom.", GetScreenWidth()/2 -800, GetScreenHeight() / 2 - 300, 40, GREEN);
-        EndDrawing();
-    }
+   
+    
+        
+        const int screenWidth = 800;
+        const int screenHeight = 450;
+      
+
+        char name[9 + 1] = "\0";      
+        int letterCount = 0;
+
+        Rectangle textBox = { GetScreenWidth()/2 - 150, 500, 350, 100 };
+        bool mouseOnText = false;
+
+        int framesCounter = 0;
+
+        SetTargetFPS(60);               
+        
+        while (!WindowShouldClose())
+        {
+            mousePoint = GetMousePosition();
+            ballPosition = GetMousePosition();
+            if (CheckCollisionPointRec(mousePoint, textBox)) mouseOnText = true;
+            else mouseOnText = false;
+
+            if (mouseOnText)
+            {
+                SetMouseCursor(MOUSE_CURSOR_IBEAM);
+
+                int key = GetCharPressed();
+
+                while (key > 0)
+                {
+                    if ((key >= 32) && (key <= 125) && (letterCount < 9))
+                    {
+                        name[letterCount] = (char)key;
+                        name[letterCount + 1] = '\0';
+                        letterCount++;
+                    }
+
+                    key = GetCharPressed();
+                }
+
+                if (IsKeyPressed(KEY_BACKSPACE))
+                {
+                    letterCount--;
+                    if (letterCount < 0) letterCount = 0;
+                    name[letterCount] = '\0';
+                }
+            }
+            else SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+
+            if (mouseOnText) framesCounter++;
+            else framesCounter = 0;
+            BeginDrawing();
+            DrawCircleV(ballPosition, 10, BLACK);
+           
+            ClearBackground(RAYWHITE);
+
+            DrawText("Write down the molecular formula of two hydrogen atoms and one oxygen atom.", GetScreenWidth() / 2 - 800, 400, 40, GREEN);
+
+            DrawRectangleRec(textBox, LIGHTGRAY);
+            if (mouseOnText) DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, RED);
+            else DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, DARKGRAY);
+
+            DrawText(name, (int)textBox.x + 5, (int)textBox.y + 8, 40, MAROON);
+
+            DrawText(TextFormat("INPUT CHARS: %i/%i", letterCount, 9), GetScreenWidth()/2 -75, 625, 20, GREEN);
+
+            if (mouseOnText)
+            {
+                if (letterCount < 9)
+                {
+                    if (((framesCounter / 20) % 2) == 0) DrawText("_", (int)textBox.x + 8 + MeasureText(name, 40), (int)textBox.y + 12, 40, MAROON);
+                }
+                else DrawText("Press BACKSPACE to delete chars...", GetScreenWidth() / 2 - 800, GetScreenHeight() / 2 - 300, 40, GREEN);
+            }
+
+            EndDrawing();
+
+        }
 }
+
 void taskTr2()
 {
   
@@ -384,4 +454,13 @@ void taskTr8()
         DrawText("How many chromosomes does the average human body have?", GetScreenWidth() / 2 - 600, GetScreenHeight() / 2, 40, RED);
         EndDrawing();
     }
+}
+bool IsAnyKeyPressed()
+{
+    bool keyPressed = false;
+    int key = GetKeyPressed();
+
+    if ((key >= 32) && (key <= 126)) keyPressed = true;
+
+    return keyPressed;
 }
