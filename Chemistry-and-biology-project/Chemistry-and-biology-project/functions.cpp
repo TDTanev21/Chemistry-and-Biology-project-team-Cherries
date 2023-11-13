@@ -18,7 +18,7 @@ void game()
     Rectangle trash1Collision = { 75, 165,  trash1.width, trash1.height };
     Rectangle trash2Collision = { 430, 160, trash2.width, trash2.height };
     Rectangle trash3Collision = { 625, 190,  trash3.width, trash3.height };
-    Rectangle trash4Collision = { 828, 140, trash4.width, trash4.height };
+    Rectangle trash4Collision = { 828, 100, trash4.width, trash4.height };
     Rectangle trash5Collision = { 1022, 202, trash5.width, trash5.height };
     Rectangle trash6Collision = { 1223, 145, trash6.width, trash6.height };
     Rectangle trash7Collision = { 1425, 202, trash7.width, trash7.height };
